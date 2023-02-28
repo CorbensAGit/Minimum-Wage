@@ -16,11 +16,12 @@ public class PlayerDeath : MonoBehaviour
         
     }
 
-    void onTriggerEnter(Collider other)
+    private void onCollisionEnter(Collision collision)
     {
-        if (other.gameObject.name=="Barrel")
+        if (collision.gameObject.name=="Barrel")
         {
             // screen that says game over or something
+            Destroy(gameObject);
         }
     }
 }
