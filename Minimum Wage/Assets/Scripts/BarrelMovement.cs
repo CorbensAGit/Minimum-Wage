@@ -19,13 +19,15 @@ public class BarrelMovement : MonoBehaviour
     private void onCollisionEnter2D(Collision2D col)
     {
         print("coll detected");
-        if (col.otherCollider.name=="RWall")
+        if (col.gameObject.name=="RWall")
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(-6, 0);
+            //GetComponent<Rigidbody2D>().velocity = new Vector2(-6, 0);
+            print("RWall");
         }
-         if (col.otherCollider.name=="LWall")
+        if (col.gameObject.name=="LWall")
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(6, 0);
+            //GetComponent<Rigidbody2D>().velocity = new Vector2(6, 0);
+            print("LWall");
         }
     }
 }

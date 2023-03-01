@@ -7,7 +7,7 @@ public class PlayerDeath : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+            print("player death script start");
     }
 
     // Update is called once per frame
@@ -16,12 +16,13 @@ public class PlayerDeath : MonoBehaviour
         
     }
 
-    private void onCollisionEnter(Collision collision)
+    private void onCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name=="Barrel")
         {
             // screen that says game over or something
-            Destroy(gameObject);
+            print("you died!");
+            //Destroy(gameObject);
         }
     }
 }
