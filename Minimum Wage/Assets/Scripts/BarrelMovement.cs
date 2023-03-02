@@ -16,7 +16,7 @@ public class BarrelMovement : MonoBehaviour
 
     }
 
-    private void onCollisionEnter2D(Collision2D col)
+    private void OnCollisionEnter2D(Collision2D col)
     {
         print("coll detected");
         if (col.gameObject.name=="RWall")
