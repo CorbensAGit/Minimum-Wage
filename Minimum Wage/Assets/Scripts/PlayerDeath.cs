@@ -20,9 +20,7 @@ public class PlayerDeath : MonoBehaviour
     {
         if (collision.gameObject.name=="Barrel")
         {
-            // screen that says game over or something
-            print("you died!");
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 }

@@ -21,13 +21,11 @@ public class BarrelMovement : MonoBehaviour
         print("coll detected");
         if (col.gameObject.name=="RWall")
         {
-            //GetComponent<Rigidbody2D>().velocity = new Vector2(-6, 0);
-            print("RWall");
+            GetComponent<Rigidbody2D>().velocity = new Vector2(-6, 0);  
         }
         if (col.gameObject.name=="LWall")
         {
-            //GetComponent<Rigidbody2D>().velocity = new Vector2(6, 0);
-            print("LWall");
+            GetComponent<Rigidbody2D>().velocity = new Vector2(6, 0);
         }
     }
 }
