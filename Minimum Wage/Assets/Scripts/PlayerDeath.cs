@@ -10,12 +10,6 @@ public class PlayerDeath : MonoBehaviour
             print("player death script start");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.name=="Barrel")

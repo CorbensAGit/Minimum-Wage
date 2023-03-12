@@ -10,12 +10,6 @@ public class BarrelMovement : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = new Vector2(6, 0);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void OnCollisionEnter2D(Collision2D col)
     {
         print("coll detected");
