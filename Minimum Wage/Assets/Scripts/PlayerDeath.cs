@@ -12,7 +12,7 @@ public class PlayerDeath : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name=="Barrel")
+        if (collision.gameObject.tag=="Death")
         {
             print("player died");
             Destroy(gameObject);

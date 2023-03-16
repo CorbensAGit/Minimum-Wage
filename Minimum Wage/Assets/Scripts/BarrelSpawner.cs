@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class barrelSpawner : MonoBehaviour
+public class BarrelSpawner : MonoBehaviour
 {
     public GameObject barrelPrefab;
-    public int timeDelay = 5;
+    public int count = 2100;
     // Update is called once per frame
-
     void Update() 
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        count--;
+        if (count <= 0)
         {
-            Instantiate(barrelPrefab, transform.position, Quaternion.idenity);
+            Instantiate(barrelPrefab, transform.position, Quaternion.identity);
+            count = 2100;
         }
     }
 

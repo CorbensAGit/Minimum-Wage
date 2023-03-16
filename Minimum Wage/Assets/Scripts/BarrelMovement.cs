@@ -12,7 +12,7 @@ public class BarrelMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        print("coll detected");
+        //print("coll detected");
         if (col.gameObject.name=="RWall")
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(-6, 0);  
