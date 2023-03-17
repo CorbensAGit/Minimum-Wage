@@ -5,7 +5,7 @@ using UnityEngine;
 public class BarrelSpawner : MonoBehaviour
 {
     public GameObject barrelPrefab;
-    public int count = 2100;
+    public int count = 1000;
     // Update is called once per frame
     void Update() 
     {
@@ -13,7 +13,7 @@ public class BarrelSpawner : MonoBehaviour
         if (count <= 0)
         {
             Instantiate(barrelPrefab, transform.position, Quaternion.identity);
-            count = 2100;
+            count = 1000;
         }
     }
 
