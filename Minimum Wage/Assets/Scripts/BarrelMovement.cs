@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class BarrelMovement : MonoBehaviour
 {
+    private Vector2 left;
+    private Vector2 right;
+    [SerializeField] private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Rigidbody2D>().velocity = new Vector2(6, 0);
+        left = new Vector2(-6, 0);
+        right = new Vector2(6, 0);
+        rb =GetComponent<Rigidbody2D>();
+        rb.velocity = left;
     }
 
     private void OnCollisionEnter2D(Collision2D col)
@@ -15,11 +21,11 @@ public class BarrelMovement : MonoBehaviour
         //print("coll detected");
         if (col.gameObject.name=="RWall")
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(-6, 0);  
+            rb.velocity = left;  
         }
         if (col.gameObject.name=="LWall")
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(6, 0);
+            rb.velocity = right;
         }
     }
 }
