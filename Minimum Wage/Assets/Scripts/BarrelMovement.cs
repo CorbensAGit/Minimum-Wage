@@ -12,8 +12,8 @@ public class BarrelMovement : MonoBehaviour
     {
         left = new Vector2(-6, 0);
         right = new Vector2(6, 0);
-        rb =GetComponent<Rigidbody2D>();
-        rb.velocity = left;
+        rb = GetComponent<Rigidbody2D>();
+        rb.velocity = right;
     }
 
     private void OnCollisionEnter2D(Collision2D col)
