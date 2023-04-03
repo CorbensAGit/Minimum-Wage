@@ -2987,7 +2987,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.27781954, y: 0.5}
   m_AnchorMax: {x: 0.6324537, y: 0.5802004}
-  m_AnchoredPosition: {x: -31.8, y: -1.5}
+  m_AnchoredPosition: {x: -25.3, y: -1.5}
   m_SizeDelta: {x: -73.9946, y: -2.0039}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &1672512160
@@ -3209,6 +3209,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainMenu: {fileID: 1719138339}
   CreditsMenu: {fileID: 53283897}
+  SettingsSquare: {fileID: 1334018625}
+  BackSquare: {fileID: 1672512160}
+  transparent: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1792040210
 GameObject:
   m_ObjectHideFlags: 0
@@ -3324,8 +3327,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -154}
-  m_SizeDelta: {x: 211.559, y: 37.4063}
+  m_AnchoredPosition: {x: 0.000012475, y: -154}
+  m_SizeDelta: {x: 211.56, y: 37.4063}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1835111349
 MonoBehaviour:
@@ -3373,7 +3376,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1719138341}
         m_TargetAssemblyTypeName: SC_MainMenu, Assembly-CSharp
-        m_MethodName: CreditsButton
+        m_MethodName: SettingsButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
