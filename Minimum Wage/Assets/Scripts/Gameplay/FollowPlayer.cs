@@ -2,15 +2,16 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour {
 
-    public Transform player;
+    public Transform Player;
+    public Transform TopPlatform;
 
     // Update is called once per frame
     void Update () {
-        if (player != null)
+        if (Player != null)
         {
-            if (player.transform.position.y < 16 && player.transform.position.y > 0)
+            if (Player.transform.position.y < TopPlatform.transform.position.y && Player.transform.position.y > 0)
             {
-                transform.position = new Vector3(0, player.transform.position.y, -20);
+                transform.position = new Vector3(-14, Player.transform.position.y, -20);
             }  
         }
     }
