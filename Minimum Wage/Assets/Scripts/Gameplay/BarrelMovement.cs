@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class BarrelMovement : MonoBehaviour
 {
-    private Vector2 left;
-    private Vector2 right;
+    private Vector2 left = new Vector2(-10, 0);
+    private Vector2 right = new Vector2(10, 0);
     [SerializeField] private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
-        left = new Vector2(-6, 0);
-        right = new Vector2(6, 0);
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = right;
     }
