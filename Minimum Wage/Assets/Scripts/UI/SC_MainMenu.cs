@@ -8,13 +8,12 @@ public class SC_MainMenu : MonoBehaviour
     public GameObject CreditsMenu;
     public SpriteRenderer SettingsSquare;
     public SpriteRenderer BackSquare;
-    public Color transparent;
+    public Color transparent = new Color(0, 0, 0, 0);
 
     // Start is called before the first frame update
     void Start()
     {
         MainMenuButton();
-        transparent = new Color(0, 0, 0, 0);
     }
 
     public void PlayNowButton()
