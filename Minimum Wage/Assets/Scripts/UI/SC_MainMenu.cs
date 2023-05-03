@@ -6,14 +6,23 @@ public class SC_MainMenu : MonoBehaviour
 {
     public GameObject MainMenu;
     public GameObject CreditsMenu;
+    public GameObject LoadMenu;
     public SpriteRenderer SettingsSquare;
     public SpriteRenderer BackSquare;
+    public SpriteRenderer ContinueSquare;
     public Color transparent = new Color(0, 0, 0, 0);
 
     // Start is called before the first frame update
     void Start()
     {
-        MainMenuButton();
+        MainMenu.SetActive(true);
+        //MainMenuButton();
+    }
+
+    public void ContinueButton()
+    {
+        MainMenu.SetActive(false);
+        LoadMenu.SetActive(true);
     }
 
     public void PlayNowButton()
@@ -38,6 +47,14 @@ public class SC_MainMenu : MonoBehaviour
         // reset the settings square
         MainMenu.SetActive(true);
         SettingsSquare.color = transparent;
+    }
+
+    public void LoadMenuBackButton()
+    {
+        LoadMenu.SetActive(false);
+
+        MainMenu.SetActive(true);
+        ContinueSquare.color = transparent;
     }
 
     public void QuitButton()
