@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class PlayerData {
+public class PlayerData
+{
     public int lives;
     public float[] position;
 
@@ -12,5 +13,6 @@ public class PlayerData {
         position = new float[2];
         position[0] = player.transform.position.x;
         position[1] = player.transform.position.y;
+
     }
 }

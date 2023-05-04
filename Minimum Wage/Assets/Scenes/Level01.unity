@@ -1286,6 +1286,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1590988007}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: LoadPlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 798035452}
+        m_TargetAssemblyTypeName: SaveSystem, Assembly-CSharp
+        m_MethodName: LoadBarrels
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &789459949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1324,6 +1348,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 789459946}
   m_CullTransparentMesh: 1
+--- !u!1 &798035450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 798035451}
+  - component: {fileID: 798035452}
+  m_Layer: 0
+  m_Name: SaveSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &798035451
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798035450}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 613.42773, y: 420.73682, z: 30.860493}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &798035452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798035450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7bb81370c844054a83f9d955878fefa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barrelPrefab: {fileID: 6467161579047519121, guid: da7ab07b8a7495045a4de80207ca6c12, type: 3}
 --- !u!1 &933642130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1897,7 +1966,7 @@ GameObject:
   - component: {fileID: 1163348533}
   m_Layer: 6
   m_Name: platform 6
-  m_TagString: Untagged
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2341,7 +2410,6 @@ GameObject:
   - component: {fileID: 1590988004}
   - component: {fileID: 1590988003}
   - component: {fileID: 1590988006}
-  - component: {fileID: 1590988005}
   - component: {fileID: 1590988007}
   m_Layer: 0
   m_Name: Player
@@ -2482,20 +2550,6 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &1590988005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1590987999}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d828370e50ff954697309ad57bb93d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lives: 2
-  start: {x: 98, y: 57}
 --- !u!114 &1590988006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2522,11 +2576,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1590987999}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72034f3cfb50122468ff622fb3602a76, type: 3}
+  m_Script: {fileID: 11500000, guid: 630646e078a97d24c8a5b711fd2236fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  start: {x: 98, y: 57}
   lives: 2
-  powerups: 
 --- !u!1 &1636786760
 GameObject:
   m_ObjectHideFlags: 0
@@ -3412,6 +3466,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1590988007}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: SavePlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 798035452}
+        m_TargetAssemblyTypeName: SaveSystem, Assembly-CSharp
+        m_MethodName: SaveBarrels
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1822699378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3749,14 +3827,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1933948388}
-  m_LocalRotation: {x: 0.035401966, y: 0.012686424, z: 0.044977494, w: 0.9982799}
-  m_LocalPosition: {x: 115.96782, y: 69.81351, z: -17.420502}
-  m_LocalScale: {x: 35.94365, y: 0.8399251, z: 1}
+  m_LocalRotation: {x: 0.028874839, y: 0.011885431, z: 0.027800297, w: 0.9991257}
+  m_LocalPosition: {x: 117.266, y: 69.9318, z: -17.4494}
+  m_LocalScale: {x: 33.33414, y: 0.8399251, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 3.988, y: 1.638, z: 5.216}
+  m_LocalEulerAnglesHint: {x: 3.27, y: 1.455, z: 3.229}
 --- !u!61 &1933948391
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3938,4 +4016,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ce07d77207518646bf4cdb368314bc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  barrelPrefab: {fileID: 5747745807874053002, guid: da7ab07b8a7495045a4de80207ca6c12, type: 3}
+  barrel: {fileID: 5747745807874053002, guid: da7ab07b8a7495045a4de80207ca6c12, type: 3}

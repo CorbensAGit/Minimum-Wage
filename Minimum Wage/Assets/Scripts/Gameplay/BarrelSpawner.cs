@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 public class BarrelSpawner : MonoBehaviour
 {
-    public GameObject barrelPrefab;
+    [SerializeField] GameObject barrel;
 
     // Update is called once per frame
     void Start () 
@@ -14,7 +16,8 @@ public class BarrelSpawner : MonoBehaviour
 
     void SpawnBarrel ()
     {
-        Instantiate(barrelPrefab, transform.position, Quaternion.identity);
+        Instantiate(barrel, transform.position, Quaternion.identity); 
     }
-
+    
+    
 }

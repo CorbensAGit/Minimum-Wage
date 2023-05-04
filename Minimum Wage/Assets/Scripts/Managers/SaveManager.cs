@@ -1,12 +1,14 @@
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-public static class PlayerSave {
-    
-    public static void SavePlayer(Player player) {
+public static class SaveManager
+{
+
+    public static void SavePlayer (Player player) 
+    {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/player.cok";
         FileStream stream = new FileStream(path, FileMode.Create);
@@ -15,13 +17,12 @@ public static class PlayerSave {
 
         formatter.Serialize(stream, data);
         stream.Close();
-
     }
 
-    public static PlayerData LoadPlayer () 
-    { 
+    public static PlayerData LoadPlayer ()
+    {
         string path = Application.persistentDataPath + "/player.cok";
-        if (File.Exists(path)) 
+        if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
@@ -31,8 +32,10 @@ public static class PlayerSave {
 
             return data;
         } else {
-            Debug.LogError("Save file not found in: " + path);
+            Debug.LogError("file not found: " + path);
             return null;
         }
     }
+
+    
 }
