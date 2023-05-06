@@ -17,7 +17,7 @@ public class FollowPlayer : MonoBehaviour {
     void Update () {
         if (Player != null)
         {
-            if (Player.transform.position.y < TopPlatform.transform.position.y && Player.transform.position.y > 0)
+            if (Player.transform.position.y < (TopPlatform.transform.position.y+2) && Player.transform.position.y > 0)
             {
 
                 transform.position = new Vector3(middlePoint, Player.transform.position.y, -28);
