@@ -7,12 +7,42 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class SaveSystem : MonoBehaviour
 {
     public static List<Barrel> barrels = new List<Barrel>();
+    public static List<Money> money = new List<Money>();
+    public Player currentPlayer;
     [SerializeField] Barrel barrelPrefab;
+    [SerializeField] Money moneyPrefab;
+    
+    void Start()
+    {
+        if (SlotController.Load == true)
+        {
+            Debug.Log("Load is: " + SlotController.Load);
+            // remove default objects
 
+            if (barrels != null) {
+                for (int i = 0; i < barrels.Count; i++)
+                {
+                    barrels[i].KillYourself();
+                }
+            }
+
+            if (money != null)
+            {
+                for (int i = 0; i < money.Count; i++)
+                {
+                    money[i].KillYourself();
+                }
+            }
+            
+            currentPlayer.LoadPlayer();
+            LoadBarrels();
+            LoadMoney();
+        }
+    }
     public static void SavePlayer (Player player) 
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/player.cok";
+        string path = Application.persistentDataPath + "/" + SlotController.SaveSlot + "player.cok";
         FileStream stream = new FileStream(path, FileMode.Create);
 
         PlayerData data = new PlayerData(player);
@@ -23,7 +53,7 @@ public class SaveSystem : MonoBehaviour
 
     public static PlayerData LoadPlayer ()
     {
-        string path = Application.persistentDataPath + "/player.cok";
+        string path = Application.persistentDataPath + "/" + SlotController.SaveSlot + "player.cok";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -42,8 +72,8 @@ public class SaveSystem : MonoBehaviour
     public void SaveBarrels()
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/barrels.cok";
-        string countPath = Application.persistentDataPath + "/barrelCount.cok";
+        string path = Application.persistentDataPath + "/" + SlotController.SaveSlot + "barrels.cok";
+        string countPath = Application.persistentDataPath + "/" + SlotController.SaveSlot + "barrelCount.cok";
 
         FileStream countStream = new FileStream(countPath, FileMode.Create);
         formatter.Serialize(countStream, barrels.Count);
@@ -62,8 +92,8 @@ public class SaveSystem : MonoBehaviour
     public void LoadBarrels()
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/barrels.cok";
-        string countPath = Application.persistentDataPath + "/barrelCount.cok";
+        string path = Application.persistentDataPath + "/" + SlotController.SaveSlot + "barrels.cok";
+        string countPath = Application.persistentDataPath + "/" + SlotController.SaveSlot + "barrelCount.cok";
         int barrelCount = 0;
         if (File.Exists(countPath))
         {
@@ -87,6 +117,63 @@ public class SaveSystem : MonoBehaviour
                 Barrel barrel = Instantiate(barrelPrefab, position, Quaternion.identity);
 
                 barrel.direction = data.direction;
+
+            } else {
+                Debug.LogError("path not found: " + path + i);
+            }
+            
+        }
+    }
+
+    public void SaveMoney()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/" + SlotController.SaveSlot + "money.cok";
+        string countPath = Application.persistentDataPath + "/" + SlotController.SaveSlot + "moneyCount.cok";
+
+        FileStream countStream = new FileStream(countPath, FileMode.Create);
+        formatter.Serialize(countStream, money.Count);
+        countStream.Close();
+
+        for (int i = 0; i < money.Count; i++) 
+        {
+            FileStream stream = new FileStream(path + i, FileMode.Create);
+            MoneyData data = new MoneyData(money[i]);
+
+            formatter.Serialize(stream, data);
+            stream.Close();
+        }
+    }
+
+    public void LoadMoney()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/" + SlotController.SaveSlot + "money.cok";
+        string countPath = Application.persistentDataPath + "/" + SlotController.SaveSlot + "moneyCount.cok";
+        int moneyCount = 0;
+        if (File.Exists(countPath))
+        {
+            FileStream countStream = new FileStream(countPath, FileMode.Open);
+            moneyCount = (int) formatter.Deserialize(countStream);
+            countStream.Close();
+        } else {
+            Debug.LogError("path not found: " + countPath);
+        }
+
+        for (int i = 0; i < moneyCount; i++)
+        {
+            if (File.Exists(path + i))
+            {
+                FileStream stream = new FileStream(path + i, FileMode.Open);
+                MoneyData data = formatter.Deserialize(stream) as MoneyData;
+
+                stream.Close();
+
+                Vector2 position = new Vector2(data.position[0], data.position[1]);
+                Money money = Instantiate(moneyPrefab, position, Quaternion.identity);
+
+                money.value = data.value;
+                money.player = currentPlayer;
 
             } else {
                 Debug.LogError("path not found: " + path + i);

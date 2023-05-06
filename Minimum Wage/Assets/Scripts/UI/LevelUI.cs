@@ -29,4 +29,11 @@ public class LevelUI : MonoBehaviour
     public void ChangeTime() {
         timeDisplay.text = "Time: " + (int)Time.time;
     }
+
+    public void UpdateAll()
+    {
+        livesDisplay.text = "lives: " + player.lives;
+        cashDisplay.text = "$" + player.cash;
+        timeDisplay.text = "Time: " + (int)Time.time;
+    }
 }

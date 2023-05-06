@@ -7,9 +7,11 @@ public class PlayerData
 {
     public int lives;
     public float[] position;
+    public int cash;
 
     public PlayerData (Player player) {
         lives = player.lives;
+        cash = player.cash;
         position = new float[2];
         position[0] = player.transform.position.x;
         position[1] = player.transform.position.y;

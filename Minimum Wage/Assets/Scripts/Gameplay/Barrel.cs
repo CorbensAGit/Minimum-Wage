@@ -48,4 +48,9 @@ public class Barrel : MonoBehaviour
     {
         SaveSystem.barrels.Add(this);
     }
+
+    public void KillYourself()
+    {
+        Destroy(gameObject);
+    }
 }

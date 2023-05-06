@@ -56,6 +56,12 @@ public class Player : MonoBehaviour
         score.ChangeLives();
     }
 
+    public void AddCash(int value)
+    {
+        cash += value;
+        score.ChangeCash();
+    }
+
     public void SavePlayer() 
     {
         SaveSystem.SavePlayer(this);
@@ -65,10 +71,12 @@ public class Player : MonoBehaviour
         PlayerData data = SaveSystem.LoadPlayer();
 
         lives = data.lives;
+        cash = data.cash;
         Vector2 position;
         position.x = data.position[0];
         position.y = data.position[1];
         transform.position = position;
+        score.UpdateAll();
     }
 
     private void FixedUpdate()

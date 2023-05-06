@@ -7,9 +7,11 @@ public class SC_MainMenu : MonoBehaviour
     public GameObject MainMenu;
     public GameObject CreditsMenu;
     public GameObject LoadMenu;
+    public GameObject SaveMenu;
     public SpriteRenderer SettingsSquare;
     public SpriteRenderer BackSquare;
     public SpriteRenderer ContinueSquare;
+    public SpriteRenderer StartSquare;
     public Color transparent = new Color(0, 0, 0, 0);
 
     // Start is called before the first frame update
@@ -25,9 +27,17 @@ public class SC_MainMenu : MonoBehaviour
         LoadMenu.SetActive(true);
     }
 
-    public void PlayNowButton()
+    public void PlayNowButton(int saveSlot)
     {
-        // Play Now Button has been pressed, here you can initialize your game (For example Load a Scene called GameLevel etc.)
+        SlotController.SaveSlot = saveSlot;
+        SlotController.Load = false;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level01");
+    }
+
+    public void LoadNowButton(int saveSlot)
+    {
+        SlotController.SaveSlot = saveSlot;
+        SlotController.Load = true;
         UnityEngine.SceneManagement.SceneManager.LoadScene("Level01");
     }
 
@@ -57,9 +67,23 @@ public class SC_MainMenu : MonoBehaviour
         ContinueSquare.color = transparent;
     }
 
+    public void SaveMenuBackButton()
+    {
+        SaveMenu.SetActive(false);
+
+        MainMenu.SetActive(true);
+        StartSquare.color = transparent;
+    }
+
     public void QuitButton()
     {
         // Quit Game
         Application.Quit();
+    }
+
+    public void StartButton()
+    {
+        MainMenu.SetActive(false);
+        SaveMenu.SetActive(true);
     }
 }
