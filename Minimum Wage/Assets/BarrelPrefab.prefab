@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5747745807874053005}
   - component: {fileID: 5747745807874053004}
   - component: {fileID: 6467161579047519121}
+  - component: {fileID: 1360896554634545924}
   m_Layer: 0
   m_Name: BarrelPrefab
   m_TagString: Death
@@ -138,3 +139,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 5747745807874053004}
   direction: R
+--- !u!114 &1360896554634545924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5747745807874053002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5c0b99864d773249bf847cfce58384f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRewinding: 0

@@ -8,6 +8,7 @@ public class LevelUI : MonoBehaviour
     public TMP_Text cashDisplay;
     public TMP_Text timeDisplay;
     public TMP_Text livesDisplay;
+    public TMP_Text shinGuardDisplay;
     public Player player;
 
     // Start is called before the first frame update
@@ -35,5 +36,22 @@ public class LevelUI : MonoBehaviour
         livesDisplay.text = "lives: " + player.lives;
         cashDisplay.text = "$" + player.cash;
         timeDisplay.text = "Time: " + (int)Time.time;
+    }
+
+    public void updateShinGuard()
+    {
+        if (player.shinGuardAvailable == true)
+        {
+            shinGuardDisplay.text = "Shin Guard Ready!";
+        }
+        else if (player.shinGuard > 0)
+        {
+            shinGuardDisplay.text = "Shin Guard: " + player.shinGuard;
+        }
+        else
+        {
+            shinGuardDisplay.text = "";
+        }
+        
     }
 }

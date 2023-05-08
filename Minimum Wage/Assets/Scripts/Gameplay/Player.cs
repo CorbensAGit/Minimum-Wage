@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     public int lives = 2;
     public int cash;
     public LevelUI score;
+    public bool shinGuardAvailable = true;
+    public int shinGuard = 0;
 
     private float horizontal;
     private float speed = 10f;
@@ -22,6 +24,13 @@ public class Player : MonoBehaviour
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
+
+        if(Input.GetButtonDown("Fire1") && shinGuardAvailable)
+        {
+            shinGuardAvailable = false;
+            shinGuard = 2;
+            score.updateShinGuard();
+        }
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
@@ -39,14 +48,27 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag=="Death")
         {
-            if (lives > 0) {
+            if (shinGuard != 0)
+            {
+                Destroy(collision.gameObject);
+                shinGuard--;
+                score.updateShinGuard();
+            } 
+            else 
+            {
+                if (lives > 0) 
+                {
                 Debug.Log("player hit");
                 TakeLife();
                 transform.position = start;
-            } else {
+                } 
+                else 
+                {
                 Debug.Log("player dead");
                 Destroy(gameObject);
+                }
             }
+            
             
         }
     }
