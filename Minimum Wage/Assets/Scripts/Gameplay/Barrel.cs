@@ -6,7 +6,7 @@ public class Barrel : MonoBehaviour
 {
     private Vector2 left = new Vector2(-10, 0);
     private Vector2 right = new Vector2(10, 0);
-    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] public Rigidbody2D rb;
     public string direction = "R";
 
     // Start is called before the first frame update

@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public LevelUI score;
     public bool shinGuardAvailable = true;
     public int shinGuard = 0;
+    public static int playTime;
 
     private float horizontal;
     private float speed = 10f;
@@ -20,6 +21,18 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
+
+    void Start()
+    {
+        if (SlotController.Load)
+        {
+
+        }
+        else
+        {
+            playTime = 0;
+        }
+    }
     // Update is called once per frame
     void Update()
     {
@@ -67,9 +80,11 @@ public class Player : MonoBehaviour
                 Debug.Log("player dead");
                 Destroy(gameObject);
                 }
-            }
-            
-            
+            } 
+        } else if (collision.gameObject.tag=="Finish") {
+            Time.timeScale = 0f;
+            PauseMenu.IsPaused = true;
+            Debug.Log("you won!");
         }
     }
 
@@ -98,6 +113,7 @@ public class Player : MonoBehaviour
         position.x = data.position[0];
         position.y = data.position[1];
         transform.position = position;
+        playTime = data.time;
         score.UpdateAll();
     }
 

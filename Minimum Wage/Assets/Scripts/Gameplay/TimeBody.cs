@@ -23,10 +23,6 @@ public class TimeBody : MonoBehaviour
         {
             StartRewind();
         }
-        if (Input.GetButtonUp("Fire2"))
-        {
-            StopRewind();
-        }
 
     }
 
@@ -46,6 +42,7 @@ public class TimeBody : MonoBehaviour
             TimePoint timePoint = TimePoints[0];
             transform.position = timePoint.position;
             transform.rotation = timePoint.rotation;
+            rb.velocity = timePoint.velocity;
             TimePoints.RemoveAt(0);
         } else
         {
@@ -59,7 +56,7 @@ public class TimeBody : MonoBehaviour
         {
             TimePoints.RemoveAt(TimePoints.Count-1);
         }
-        TimePoints.Insert(0, new TimePoint(transform.position, transform.rotation));
+        TimePoints.Insert(0, new TimePoint(transform.position, transform.rotation, rb.velocity));
     }
 
     public void StartRewind()

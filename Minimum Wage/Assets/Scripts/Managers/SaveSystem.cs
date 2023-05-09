@@ -117,6 +117,7 @@ public class SaveSystem : MonoBehaviour
                 Barrel barrel = Instantiate(barrelPrefab, position, Quaternion.identity);
 
                 barrel.direction = data.direction;
+                barrel.rb.velocity = new Vector2(data.velocity[0], data.velocity[1]);
 
             } else {
                 Debug.LogError("path not found: " + path + i);

@@ -16,7 +16,10 @@ public class LevelUI : MonoBehaviour
     {
         cashDisplay.text = "$" + player.cash;
         livesDisplay.text = "lives: " + player.lives;
-        InvokeRepeating("ChangeTime", 0.0f, 1.0f);
+        if (player.shinGuardAvailable)
+        {
+            updateShinGuard();
+        }
     }
 
     public void ChangeLives() {
@@ -27,8 +30,8 @@ public class LevelUI : MonoBehaviour
         cashDisplay.text = "$" + player.cash;
     }
 
-    public void ChangeTime() {
-        timeDisplay.text = "Time: " + (int)Time.time;
+    public void updateTime() {
+        timeDisplay.text = "Time: " + Player.playTime;
     }
 
     public void UpdateAll()

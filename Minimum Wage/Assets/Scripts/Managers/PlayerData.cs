@@ -8,6 +8,7 @@ public class PlayerData
     public int lives;
     public float[] position;
     public int cash;
+    public int time;
 
     public PlayerData (Player player) {
         lives = player.lives;
@@ -15,6 +16,7 @@ public class PlayerData
         position = new float[2];
         position[0] = player.transform.position.x;
         position[1] = player.transform.position.y;
+        time = Player.playTime;
 
     }
 }
