@@ -29,7 +29,7 @@ public class AchievementDatabaseEditor : Editor
     string code = "public enum Achievements {";
     foreach (Achievement achievement in database.achievements)
     {
-        code += achievement.id + ",";
+        code += achievement.Id + ",";
     }
     code += "}";
     File.WriteAllText(filePath, code);

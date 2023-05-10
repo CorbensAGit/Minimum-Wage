@@ -7,20 +7,16 @@ using TMPro;
 [RequireComponent(typeof(Animator))]
 public class AchievementNotificationManager : MonoBehaviour
 {
-    [SerializeField] TMP_Text achievementTitleLablel;
+    public TMP_Text achievementTitleLablel;
+    public TMP_Text achievementDescriptionLabel;
 
-    private Animator curr_animator;
-    // Start is called before the first frame update
-    void Awake()
-    {
-        curr_animator = GetComponent<Animator>();
-    }
+    public Animator curr_animator;
 
     // Update is called once per frame
     public void ShowNotification(Achievement achievement)
     {
-        Debug.Log("earned: " + achievement.id);
-        achievementTitleLablel.text = achievement.title;
+        achievementTitleLablel.text = achievement.Title;
+        achievementDescriptionLabel.text = achievement.Description;
         curr_animator.SetTrigger("Appear");
     }
 }

@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
+
     public Vector2 start = new Vector2(98, 57);
     public int lives = 2;
     public int cash;
@@ -21,6 +23,11 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
+    [SerializeField] private UnityEvent barrelBuster; 
+    [SerializeField] private UnityEvent ModelEmployee;
+    [SerializeField] private UnityEvent OnTheClock;
+    [SerializeField] private UnityEvent BigBucks;
+    private AchievementManager achievementManager;
 
     void Start()
     {
@@ -32,6 +39,7 @@ public class Player : MonoBehaviour
         {
             playTime = 0;
         }
+        achievementManager = FindObjectOfType<AchievementManager>();
     }
     // Update is called once per frame
     void Update()
@@ -63,7 +71,9 @@ public class Player : MonoBehaviour
         {
             if (shinGuard != 0)
             {
+                //achievementManager.NotifyAchievement("BarrelBuster");
                 Destroy(collision.gameObject);
+                barrelBuster.Invoke();
                 shinGuard--;
                 score.updateShinGuard();
             } 
@@ -71,19 +81,25 @@ public class Player : MonoBehaviour
             {
                 if (lives > 0) 
                 {
-                Debug.Log("player hit");
                 TakeLife();
                 transform.position = start;
                 } 
                 else 
                 {
-                Debug.Log("player dead");
                 Destroy(gameObject);
                 }
             } 
         } else if (collision.gameObject.tag=="Finish") {
-            Time.timeScale = 0f;
-            PauseMenu.IsPaused = true;
+            if (playTime <= 60) 
+            {
+                OnTheClock.Invoke();
+                //achievementManager.NotifyAchievement("OnTheClock"); 
+            }
+            if (lives == 2)
+            {
+                ModelEmployee.Invoke();
+                //achievementManager.NotifyAchievement("ModelEmployee");
+            }
             Debug.Log("you won!");
         }
     }
@@ -97,6 +113,10 @@ public class Player : MonoBehaviour
     {
         cash += value;
         score.ChangeCash();
+        if (cash >= 50)
+        {
+            BigBucks.Invoke();
+        }
     }
 
     public void SavePlayer() 
