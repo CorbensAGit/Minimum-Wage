@@ -5067,6 +5067,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 1590988001}
   TopPlatform: {fileID: 1163348532}
+  BottomPlatform: {fileID: 1879615846}
   LWall: {fileID: 289515101}
   RWall: {fileID: 1515846950}
 --- !u!1 &1799566489
