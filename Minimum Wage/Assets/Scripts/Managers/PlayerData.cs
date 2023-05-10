@@ -17,6 +17,5 @@ public class PlayerData
         position[0] = player.transform.position.x;
         position[1] = player.transform.position.y;
         time = Player.playTime;
-
     }
 }
