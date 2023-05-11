@@ -37,6 +37,9 @@ public class SaveSystem : MonoBehaviour
             currentPlayer.LoadPlayer();
             LoadBarrels();
             LoadMoney();
+        } else if (SlotController.Continue == true)
+        {
+            currentPlayer.LoadPlayer();
         }
     }
     public static void SavePlayer (Player player) 

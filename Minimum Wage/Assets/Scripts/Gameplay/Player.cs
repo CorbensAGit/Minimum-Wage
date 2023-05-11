@@ -69,7 +69,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag=="Death")
         {
-            if (shinGuard != 0)
+            if (shinGuard > 0)
             {
                 //achievementManager.NotifyAchievement("BarrelBuster");
                 Destroy(collision.gameObject);
@@ -100,7 +100,7 @@ public class Player : MonoBehaviour
                 ModelEmployee.Invoke();
                 //achievementManager.NotifyAchievement("ModelEmployee");
             }
-            Debug.Log("you won!");
+            
         }
     }
 
